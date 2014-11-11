@@ -1,6 +1,7 @@
 # temp files
 a.*
 a
+compile.sh
 
 # Compiled Object files
 *.slo
