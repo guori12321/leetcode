@@ -1,3 +1,4 @@
+//In fact, it is the select sort.
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -24,20 +25,14 @@ public:
             {
                 if (i->next->val > j->next->val)
                 {
-                    //i     i->next a     i->next-next
-                    //j     j->next     j->next->next b
-                    //
-                    //i->next = j->next
-                    //j->next->next = a->next
-                    //j->next = a
-                    //a->next = b
                     ListNode *a = i->next, *b = j->next->next;
                     i->next = j->next;
-                    j->next->next = a->next;
-                    j->next = a;
-                    a->next = b;
+                    j->next->next = a;
+                    j->next = b;
                 }
-                j = j->next;
+                //Note that j may be moved forward after the swap.
+                //So if we move j after the swap, we will skip one node.
+                else j = j->next;
             }
             i = i->next;
         }
